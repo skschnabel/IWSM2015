@@ -100,7 +100,7 @@ The Netherlands \and Universit\"at Hohenheim, Germany}
 
 % Sections and subsections (do not use lower levels):
 
-\section{Introduction and motivation}
+\section{Introduction and motivation and analysis}
 
 \begin{itemize}
 \item Decreasing costs of genotyping $\rightarrow$ data readily available 
@@ -113,11 +113,59 @@ The Netherlands \and Universit\"at Hohenheim, Germany}
 \item Here we focus on exploring/quantifying LD decay.
 \item As an exploratory tool we will be using quantile regression (general references).
 \item Data: (local) LD decay in Maize
+\item Explain about LD decay
+\item Add general graph LD decay (with the example of chromosome 1 as the leading example for 
+	the abstract).
+\item Make a 2x2 panel of graphs: LD decay in general, with quantile curves and threshold, 
+	Medians, fitted curve to median with line at centromere.
+\item As a recurring example in this manuscript we are using Chromosome 1 of the above described 
+	Maize genome. We have XX markers on this chromosome, resulting in XX*(XX-1)/2 distances 
+	between two markers on the same chromosome. A plot of the LD decay (measured in $R^2$) 
+	for these distances (in cM - centiMorgan or in base pairs) can be found in Figure A. In a study of global 
+	LD decay we would be interested to model the relationship over the whole chromosome of 
+	XX Mbp (Mega base pairs). In our case it is of interest to have a look what happens to 
+	LD decay at a smaller scale. Therefore we investigate local LD decay in subsequent 
+	overlapping/sliding windows of 2.5Mbp and fit a set of quantile curves to these 
+	sections on the whole plot. One such fit for $\tau = 0.5$ is depicted in Figure B. 
+	We are using quantile 
+	regression with a monotonicity constraint (references) 
+	to ensure a monotone decreasing curve (that is 
+	in line with the underlying biological assumptions). In the following we show the 
+	results only for the median curves. However, this analysis can be done for any quantile  
+	In Figure B the median curve is plotted as well as a threshold in terms of $R^2$ taken as 
+	0.1. For exploration of local LD decay we are interested in the distance $\Delta_{0.5}$ from 
+	which onwards the LD decay in falling beneath the threshold. (This can be interpreted as...?)
+	On Chromosome 1 of this population we have XX sliding windows of 2.5Mbp with an 
+	average of XX points falling in one window. The distances 
+	$\Delta_{0.5}$ for all the sliding windows are collected and plotted in Figure C 
+	at the respective center of the window. Local 
+	LD decay in terms of median distance at threshold 0.1 is...? (We collect these data for a 
+	values $\tau$ that are of interest.) While these data points are an interested result as
+	such (quantifying local LD decay) it is hard to judge the relationship that is plotted in 
+	Figure C by eye. Therefore we used $P-$splines to fit a smooth curve to these results (as 
+	displayed by the green curve in Figure D). For our example we detect a bi-modal form of the 
+	relationship. The red line in the graph indicated the so-called centromere \footnote{
+	Explanation centromere.} We have reason to believe that the bi-modality might be caused by 
+	the position of the centromere with the median distance at threshold rapidly decreasing 
+	around it (which is kind of logic??). However, this phenomenon could not be observed for 
+	all of the 10 chromosomes in this data set.   
 \end{itemize}
 
+\section{Conclusion and Discussion}
 
-
-
+\begin{itemize}
+\item Use of monotone quantile regression and spline smoothing for exploring 
+	local LD decay patterns in Maize
+\item Summarizing lots of data points into graphs that are easy inspect/interpret for the 
+	collaborating biologists.
+\item While the presented steps are a good tool to quantify local LD decay, they have also been 
+	instrumental in identifying problems with the genotyping that have previously been 
+	overlooked. On the one hand we discovered sliding windows with few data points (naja, not 
+	the best formulation, but something like undercoverage of certain distances in LD decay 
+	or so). While fitting the smooth curves in Figure D we observed a noticeable clustering 
+	in terms of $R^2$ values in some of the subsets of the data. This phenomenon was unknown 
+	to date in this data set and has lead to reconsiderations of the data quality.
+\end{itemize}
 
 
 %Text for the first section. This section will have two subsections.
@@ -131,9 +179,9 @@ The Netherlands \and Universit\"at Hohenheim, Germany}
 %\subsection{Section 1.1}
 %Text for the first subsection within section 1. (Do you really need subsections ?)
 
-
-\section{Section 2}
-Text for the second section. This section will have no subsections.
+%
+%\section{Section 2}
+%Text for the second section. This section will have no subsections.
 
 
 
