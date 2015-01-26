@@ -70,28 +70,29 @@
 %***********************************************************************
 
 % Title and running title to be used as left header:
-\title{Exploring LD decay with quantiles -- a case study}
+%\title{Exploring LD decay with quantiles -- a case study}
+\title{Quantifying LD decay by quantile regression -- a case study} 
 \titlerunning{Quantiles for LD decay}
 
 % Authors and running list of authors to be used as right header:
-\author{Federico Torretta\inst{1}, Sabine K. Schnabel\inst{2}, Matthias Westhues\inst{3}}
-\authorrunning{Torretta et al.}    %% use \authorrunning{Surname 1} if only 1 author
+\author{Sabine K. Schnabel\inst{1}, Federico Torretta\inst{2} and Matthias Westhues \inst{3}}
+\authorrunning{Schnabel et al.}    %% use \authorrunning{Surname 1} if only 1 author
                                     %% use \authorrunning{Surname 1 and Surname2} if two authors
                                     %% use \authorrunning{Surname 1 et al.} if more than two authors
 
 % Institutes of all authors
 % Include city and country of each institute, do not include the full address.
-\institute{Universit\`a di Palermo, Italy \and Biometris, Wageningen University and Research Centre,
-The Netherlands \and Universit\"at Hohenheim, Germany}
+\institute{Biometris, Wageningen University and Research Centre,
+The Netherlands \and Universit\`a di Palermo, Italy \and Universit\"at Hohenheim, Germany}
 
 % E-mail of presenting author for correspondence
 \email{sabine.schnabel@wur.nl}
 
 % Brief abstract of the paper:
-\abstract{Abstract text}
+\abstract{Still missing.}
 
 % Keywords (at most 5):
-\keywords{Keyword1; Keyword2; Keyword3.}
+\keywords{Quantile regression; smoothing; monotonicity; linkage; LD decay}
 
 % Produce the title:
 \maketitle
@@ -100,7 +101,7 @@ The Netherlands \and Universit\"at Hohenheim, Germany}
 
 % Sections and subsections (do not use lower levels):
 
-\section{Introduction and motivation and analysis}
+\section{Introduction and Motivation}
 
 \begin{itemize}
 \item Decreasing costs of genotyping $\rightarrow$ data readily available 
@@ -114,14 +115,19 @@ The Netherlands \and Universit\"at Hohenheim, Germany}
 \item As an exploratory tool we will be using quantile regression (general references).
 \item Data: (local) LD decay in Maize
 \item Explain about LD decay
-\item Add general graph LD decay (with the example of chromosome 1 as the leading example for 
+\item Point to general graph (A) LD decay (with the example of chromosome 1 as the leading example for 
 	the abstract).
+\end{itemize}
+
+\section{Analysis and Application}
+\begin{itemize}
 \item Make a 2x2 panel of graphs: LD decay in general, with quantile curves and threshold, 
 	Medians, fitted curve to median with line at centromere.
 \item As a recurring example in this manuscript we are using Chromosome 1 of the above described 
 	Maize genome. We have XX markers on this chromosome, resulting in XX*(XX-1)/2 distances 
 	between two markers on the same chromosome. A plot of the LD decay (measured in $R^2$) 
-	for these distances (in cM - centiMorgan or in base pairs) can be found in Figure A. In a study of global 
+	for these distances (in cM - centiMorgan or in base pairs) can be found in Figure A. 
+	In a study of global 
 	LD decay we would be interested to model the relationship over the whole chromosome of 
 	XX Mbp (Mega base pairs). In our case it is of interest to have a look what happens to 
 	LD decay at a smaller scale. Therefore we investigate local LD decay in subsequent 
@@ -185,63 +191,63 @@ The Netherlands \and Universit\"at Hohenheim, Germany}
 
 
 
-%***********************************************************************
-
-% Tables can be included at any place in the text.
-% As general format, use tables with horizontal lines only
-% (i.e., no vertical lines separating columns).
-% Start and end each table with a double horizontal line.
-% Tables are incorporated using a table environment:
-
-\begin{table}[!hb]\centering
-% A caption is put above the table and a label is defined
-% to be used for reference to this specific table.
-% Use labels which are very unlikely to be used by
-% other contributors; for example, use labels starting
-% with the surname of the first author.
-\caption{\label{smith:tab1} Caption text \textbf{ABOVE} the table.}
-% A table with three columns, where the first is left aligned,
-% the second has centred entries, and the third is right aligned,
-% is generated as follows (note: if requested, use \cmidrule{} instead of \cline{})
-\medskip
-\begin{tabular}{lcr}
-% First line:
-\toprule[0.09 em]
-% The body of the table:
-Title col1 & Title col2 & Title col3 \\
-\midrule
-row1 col1  & row1 col2  & row1 col3  \\
-row2 col1  & row2 col2  & row2 col3  \\ %
-row3 col1  & row3 col2  & row3 col3  \\
-% last line:
-\bottomrule[0.09 em]
-\end{tabular}
-\end{table}
-
-% In the text, reference to the Table can be made as follows:
-We refer to Table~\ref{smith:tab1} for a summary of our main results. Have a look to Table~\ref{smith:tab2} for
-an additional example.
-
-\begin{table}[!ht]\centering
-\caption{\label{smith:tab2} Caption text \textbf{ABOVE} the table.}
-\medskip
-\begin{tabular}{lcr}
-% First line:
-\toprule[0.09 em]
-% The body of the table:
-  &\multicolumn{2}{c}{Title  for cols 2 -3} \\
-\cmidrule{2-3} %
-Title1 & Title2 & Title3 \\
-\midrule
-& $a$  & $c$ \\
-& $b$  & $d$ \\ %
-\midrule[0 em]
-Total  & $a+b$  & $n$  \\
-% last line:
-\bottomrule[0.09 em]
-\end{tabular}
-\end{table}
-
+%%***********************************************************************
+%
+%% Tables can be included at any place in the text.
+%% As general format, use tables with horizontal lines only
+%% (i.e., no vertical lines separating columns).
+%% Start and end each table with a double horizontal line.
+%% Tables are incorporated using a table environment:
+%
+%\begin{table}[!hb]\centering
+%% A caption is put above the table and a label is defined
+%% to be used for reference to this specific table.
+%% Use labels which are very unlikely to be used by
+%% other contributors; for example, use labels starting
+%% with the surname of the first author.
+%\caption{\label{smith:tab1} Caption text \textbf{ABOVE} the table.}
+%% A table with three columns, where the first is left aligned,
+%% the second has centred entries, and the third is right aligned,
+%% is generated as follows (note: if requested, use \cmidrule{} instead of \cline{})
+%\medskip
+%\begin{tabular}{lcr}
+%% First line:
+%\toprule[0.09 em]
+%% The body of the table:
+%Title col1 & Title col2 & Title col3 \\
+%\midrule
+%row1 col1  & row1 col2  & row1 col3  \\
+%row2 col1  & row2 col2  & row2 col3  \\ %
+%row3 col1  & row3 col2  & row3 col3  \\
+%% last line:
+%\bottomrule[0.09 em]
+%\end{tabular}
+%\end{table}
+%
+%% In the text, reference to the Table can be made as follows:
+%We refer to Table~\ref{smith:tab1} for a summary of our main results. Have a look to Table~\ref{smith:tab2} for
+%an additional example.
+%
+%\begin{table}[!ht]\centering
+%\caption{\label{smith:tab2} Caption text \textbf{ABOVE} the table.}
+%\medskip
+%\begin{tabular}{lcr}
+%% First line:
+%\toprule[0.09 em]
+%% The body of the table:
+%  &\multicolumn{2}{c}{Title  for cols 2 -3} \\
+%\cmidrule{2-3} %
+%Title1 & Title2 & Title3 \\
+%\midrule
+%& $a$  & $c$ \\
+%& $b$  & $d$ \\ %
+%\midrule[0 em]
+%Total  & $a+b$  & $n$  \\
+%% last line:
+%\bottomrule[0.09 em]
+%\end{tabular}
+%\end{table}
+%
 
 
 %***********************************************************************
@@ -267,12 +273,14 @@ Finally a figure (in \verb|.pdf|!)
 % Use labels which are very unlikely to be used by
 % other contributors; for example, use labels starting
 % with the surname of the first author.
-\caption{\label{smith:fig1} Caption text \textbf{BELOW} the figure.}
+\caption{\label{SchnabelTorrettaWesthues:fig1} (A) Plot of LD decay for Chromosome 1. (B) Sample of 
+data with threshold and $\Delta_{0.5}$ indication. (C) Collection of $\Delta_{0.5}$ for Chromosome 1. 
+(D) Smooth fit with indication of the the centromere.}
 \end{figure}
 
 
 % In the text, reference to the Figure can be made as follows:
-We refer to Figure~\ref{smith:fig1} for a~graphical representation.
+We refer to Figure~\ref{SchnabelTorrettaWesthues:fig1} for a~graphical representation.
 
 
 %***********************************************************************
