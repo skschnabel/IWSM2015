@@ -109,22 +109,28 @@ Within the past decade, highly abundant molecular marker data have become availa
 and agricultural research. The use of genotyping chips with more than 50,000 single nucleotide 
 polymorphisms (SNP) has become a standard practice for major crops in plant breeding companies. 
 The two major applications for molecular marker data in agriculture and biology are the prediction 
-of genetic values \ref{Heffner2009,Jannink2010} and the detection of quantitative trait loci (QTL) 
-\ref{Bernardo2008}. Genome-wide association studies (GWAS) have emerged as a great tool for the 
+of genetic values (Heffner et al., 2009; Jannink et al., 2010) 
+and the detection of quantitative trait loci (QTL) 
+(Bernardo, 2008). Genome-wide association studies (GWAS) have emerged as a great tool for the 
 localization of QTL in breeding programs with material of varying degrees of population structure
-\ref{Bush2012}. In order to reduce the number of false-positive signals for marker-trait associations,
-such structure needs to be accounted for \ref{Astle2009}. This problem is typically addressed through 
-the use of kinship matrices \textbf{K}, which are estimated from molecular marker data \ref{VanRaden2008}.
+(Bush and Moore, 2012). 
+In order to reduce the number of false-positive signals for marker-trait associations,
+such structure needs to be accounted for (Astle and Balding, 2009). This problem is typically addressed through 
+the use of kinship matrices \textbf{K}, which are estimated from molecular marker data 
+(VanRaden, 2008).
 Unless a QTL itself is localized directly, there is a necessity for linkage disequilibrium (LD) between
 the QTL and neighboring SNP markers, which is the squared Pearson correlation between pairs of genetic
-markers \ref{Hill1968}. However, the power at a SNP decreases when it, or a marker in LD therewith,
+markers (Hill and Roberts, 1968). However, the power at a SNP decreases when it, 
+or a marker in LD therewith,
 is simultaneously used for the computation of \textbf{K} as well as for testing marker-trait 
-associations \ref{Listgarten2012}. Hence, we are addressing this problem by visualizing the distance
+associations (Listgarten et al., 2012). 
+Hence, we are addressing this problem by visualizing the distance
 between pairs of markers at which they are not considered to be in LD anymore. Such markers can be 
-selected by researchers for the computation of \textbf{K}. Moreover, this method can aid the elucidation
+selected by researchers for the computation of \textbf{K}. Moreover, this method can aid 
+the elucidation
 of selection patterns on the chromosome. As an example, we are using data from chromosome 1 of a maize 
 population consisting of 123 Eupean Dent inbred lines and 114 European Flint inbred lines
-\ref{Fischer2008}. Figure~\ref{SchnabelTorrettaWesthues:fig1}~(A) shows the typical LD decay plot 
+(Fischer et al., 2008). Figure~\ref{SchnabelTorrettaWesthues:fig1}~(A) shows the typical LD decay plot 
 for this part of the genome. 
 
 %\begin{itemize}
@@ -160,7 +166,7 @@ As a recurring example in this manuscript we are using Chromosome 1 of the above
 	in Figure~\ref{SchnabelTorrettaWesthues:fig1}~B. 
 	We are using quantile 
 	regression with a monotonicity constraint,
-	$\mu_{\tau}=s_{\tau}(dist)$, where $\mu_\tau$ is the quantile function at percentile $\tau$, $dist$ is the SNP distance between couples of markers and $s_{\tau}(\cdot)$ is a smooth and unknown function.
+	$\mu_{\tau}=s_{\tau}(dist)$, where $\mu_\tau$ is the quantile function at percentile $\tau$, $dist$ is the SNP distance between couples of markers and $s_{\tau}(\cdot)$ is a smooth and unknown function. (Muggeo et al., 2013; Bollaerts et al., 200X).
 	If you want to specify the monotonicity constraints I need to be more formal, like
 	$\min\sum_k^K b_{k\tau} B_k(dist)$ subject to $b_k>b_{k-1}$ for $k=2,\dots,K$, where $b_{k\tau}$ is the coefficient of the $B_k$-th spline and $K$ is the dimension of the design matrix. 
 	I don't like the second alternative..
@@ -175,9 +181,7 @@ As a recurring example in this manuscript we are using Chromosome 1 of the above
 	average distance within this window from which on two marker loci are considered to be 
 	independent of each other. Such two markers could, for example, be selected for the computation
 	of \textbf{K}.
-	On Chromosome 1 of this population we have 1085 sliding windows \textcolor{blue}
-	{we have 1119 sliding windows in the main dataset but we actually used 1085 sliding windows after the corrections
-}
+	On Chromosome 1 of this population we have 1085 sliding windows
 	 of 2.5Mbp with an 
 	average of 2024 points falling in one window. The distances 
 	$\Delta_{0.5}$ for all the sliding windows are collected and plotted in Figure C 
@@ -315,44 +319,50 @@ visiting at Biometris at Wageningen University and Research Centre in winter 201
 \item[Bernardo, R.] (2008). 
 		Molecular Markers and Selection for Complex Traits in Plants: Learning from the Last 20 Years.
 		{\it Crop Science}, {\bf 48}, 1649\,--\,1664
+		
+\item[Bollaerts, K., Eilers, P.H.C. and M. Aerts] (2006). Quantile regression with monotonicity restrictions using P-splines and the L1-norm. {\it Statistical Modelling}, {\bf 6}, 189\,--\,207 
 \item[Bush, W.S. and Moore, J.H.] (2012).
 		Chapter 11: Genome-wide association studies.
 		{\it PLOS Computational Biology}, {\bf 8}, 1\,--\,11
-\item[Diggle, P.J., Liang, K-Y., and Zeger, S.L.] (1994).
-     {\it Analysis of Longitudinal Data}.
-     Oxford: Clarendon Press.
-\item[Fischer, S., M\"{o}hring, J., Sch\"{o}n, C. C., Piepho, H.-P., Klein, D., Schipprack, W., Utz, H.F., Melchinger, A.E., and Reif, J.C.] (2008).
+%\item[Diggle, P.J., Liang, K-Y., and Zeger, S.L.] (1994).
+%     {\it Analysis of Longitudinal Data}.
+%     Oxford: Clarendon Press.
+\item[Fischer, S., M\"{o}hring, J., Sch\"{o}n, C. C., Piepho, H.-P., Klein, D., Schipprack, W.,] {Utz, H.F., Melchinger, A.E., and Reif, J.C.} (2008).
 		Trends in genetic variance components during 30 years of hybrid maize breeding at the University of Hohenheim.
 		{\it Plant Breeding}, {\bf 127}, 446\,--\,451
-\item[Green, P.J. and Silverman, B.W.] (1994).
-     {\it Nonparametric Regression and Generalized Linear Models}.
-     London: Chapman \& Hall.
+%\item[Green, P.J. and Silverman, B.W.] (1994).
+%     {\it Nonparametric Regression and Generalized Linear Models}.
+%     London: Chapman \& Hall.
 \item[Heffner, E.L., Sorrells, M.E., and Jannink, J.L.] (2009).
 		Genomic Selection for Crop Improvement. 
 		{\it Crop Science}, {\bf 49}, 1\,--\,12
-\item[Henderson, C.R.] (1973).
-     Sire evaluation and genetic trends.
-     In: {\it Proceedings of the Animal Breeding and Genetics Symposium in
-     Honour of Dr.\ L.\ Lush}, Champaign, Illinois, 10\,--\,41.
+%\item[Henderson, C.R.] (1973).
+%     Sire evaluation and genetic trends.
+%     In: {\it Proceedings of the Animal Breeding and Genetics Symposium in
+%     Honour of Dr.\ L.\ Lush}, Champaign, Illinois, 10\,--\,41.
 \item[Hill, W.G. and Robertson, A.] (1968).
 		Linkage Disequilibrium in Finite Populations.
 		{\it Theoretical and Applied Genetics}, {\bf 38}, 226\,--\,231		
 \item[Jannink, J.L., Lorenz, A.J. and Iwata, H.] (2010).
 		Genomic selection in plant breeding: from theory to practice.
-		{\it Briefings in functional genomics}, {\bf 9}, 166\,--\,177
-\item[Lee, Y. and Nelder, J.A.] (1996).
-     Hierarchical generalized linear models.
-     {\it Journal of the Royal Statistical Society, Series B}, {\bf 58},
-      619\,--\,678.
+		{\it Briefings in Functional Genomics}, {\bf 9}, 166\,--\,177
+%\item[Lee, Y. and Nelder, J.A.] (1996).
+%     Hierarchical generalized linear models.
+%     {\it Journal of the Royal Statistical Society, Series B}, {\bf 58},
+%      619\,--\,678.
 \item[Listgarten, J., Lippert, C., Kadie, C.M., Davidson, R.I., Eskin, E., and Heckerman, D.] (2012). 
 		Improved linear mixed models for genome-wide association studies.
-		{\it Nature methods}, {\bf 9}, 525\,--\,526
-\item[Robinson, G.K.] (1991).
-     That BLUP is a good thing: the estimation of random effects (with Discussion).
-     {\it Statistical Science}, {\bf 6}, 15\,--\,51.
+		{\it Nature Methods}, {\bf 9}, 525\,--\,526
+		
+\item [Muggeo V. , Sciandra M., Tomasello A., Calvo S.] (2013) Estimating growth charts via 		
+		nonparametric quantile regression: a practical framework with application in Ecology. 
+		{\it Environmental and Ecological Statistics}, 20, 519\,--\,531. 		
+%\item[Robinson, G.K.] (1991).
+%     That BLUP is a good thing: the estimation of random effects (with Discussion).
+%     {\it Statistical Science}, {\bf 6}, 15\,--\,51.
 \item[VanRaden, P.M.] (2008).
 		Efficient methods to compute genomic predictions.
-		{\it Journal of dairy science}, {\bf 91}, 4414\,--\,4423
+		{\it Journal of Dairy Science}, {\bf 91}, 4414\,--\,4423
 \end{description}
 
 \end{document}
