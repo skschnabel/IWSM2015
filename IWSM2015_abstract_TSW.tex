@@ -148,8 +148,8 @@ for this part of the genome.
 \section{Analysis and Application}
 
 As a recurring example in this manuscript we are using Chromosome 1 of the above described 
-	Maize genome. We have XX markers \textcolor{blue}{(??how many are there??)} 
-	on this chromosome, resulting in XX*(XX-1)/2 distances 
+	Maize genome. We have 5066 markers 
+	on this chromosome, resulting in 12833086 distances 
 	between two markers on the same chromosome. A plot of the LD decay (measured in $R^2$) 
 	for these distances (in base pairs - bp) can be found 
 	in Figure~\ref{SchnabelTorrettaWesthues:fig1}~A. 
@@ -161,8 +161,12 @@ As a recurring example in this manuscript we are using Chromosome 1 of the above
 	sections on the whole plot. One such fit for $\tau = 0.5$ is depicted 
 	in Figure~\ref{SchnabelTorrettaWesthues:fig1}~B. 
 	We are using quantile 
-	regression with a monotonicity constraint 
-	\textcolor{blue}{(Federico: references and a short formula...? )} 
+	regression with a monotonicity constraint,
+	\textcolor{blue}{$\mu_{\tau}=s_{\tau}(dist)$, where $\mu_\tau$ is the quantile function at percentile $\tau$, $dist$ is the SNP distance between couples of markers and $s_{\tau}(\cdot)$ is a smooth and unknown function.
+	If you want to specify the monotonicity constraints I need to be more formal, like
+	$\min\sum_k^K b_{k\tau} B_k(dist)$ subject to $b_k>b_{k-1}$ for $k=2,\dots,K$, where b_{k\tau} is the coefficient of the B_k-th spline and $K$ is the dimension of the design matrix. 
+	I don't like the second alternative..
+	}
 	to ensure a monotone decreasing curve (that is 
 	in line with the underlying biological assumptions). In the following we show the 
 	results only for the median curves. However, this analysis can be done for any quantile  
@@ -172,13 +176,13 @@ As a recurring example in this manuscript we are using Chromosome 1 of the above
 	which onwards the LD decay in falling beneath the threshold. \textcolor{red}{(Matthias: This can be interpreted
 	 as...?)}
 	On Chromosome 1 of this population we have 1119 sliding windows \textcolor{blue}
-	{(Federico: can you check on this?)}
+	{we have 1119 sliding windows in the main dataset but we actually used 1085 sliding windows after the corrections
+}
 	 of 2.5Mbp with an 
-	average of 2000 points falling in one window \textcolor{blue}{(Federico?)}. The distances 
+	average of 2024 points falling in one window. The distances 
 	$\Delta_{0.5}$ for all the sliding windows are collected and plotted in Figure C 
 	at the respective center of the window. Local 
-	LD decay in terms of median distance at threshold 0.1 is 321709 bp 
-	\textcolor{blue}{(Federico?)}. 
+	LD decay in terms of median distance at threshold 0.1 is 321709 bp. 
 	(We collect these data for a 
 	values $\tau$ that are of interest.) While these data points are an interested result as
 	such to quantify local LD decay, it is hard to judge by eye the relationship that is plotted in 
