@@ -105,28 +105,26 @@ The Netherlands \and Universit\`a di Palermo, Italy \and Universit\"at Hohenheim
 
 \section{Introduction and Motivation}
 
-\textcolor{green}{general comment}\newline
-\textcolor{blue}{comment to Federico}\newline
-\textcolor{red}{comment to Matthias}\newline
-
-Through decreasing costs more and more genotyping data is available in projects in 
-biology and agriculture. More genetic markers can be created which results in more 
-information on the genetic structure being at the disposure of the investigators. However, 
-more available data does not forcedly result in more information available that can be 
-used in further research. The sheer amount of data \textcolor{green}{(??BIG DATA??)} 
-might be a problem 
-that is commonly encountered \textcolor{green}{(reference big data in agriculture?)}. 
-Management, exploration and 
-analysis of these data is imposing problems. Already the exploratory analysis of such data 
-can be challenging. In this case study we focus in the quantification of linkage disequilibrium 
-decay (LD decay). LD decay is usually visualized against the distance of two markers 
-on a selected chromosome. The decay is basically measured in terms of correlation between 
-pairs of genetic markers. Typically there are thousands of markers available for a plant 
-genome resulting in millions of pairs to be compared. 
-As an example we are using data from chromosome 1 of a maize population 
-\textcolor{red}{(Matthias: add short 
-information and reference for the population)}. 
-Figure~\ref{SchnabelTorrettaWesthues:fig1}~(A) shows the typical LD decay plot 
+Within the past decade, highly abundant molecular marker data have become available in biological 
+and agricultural research. The use of genotyping chips with more than 50,000 single nucleotide 
+polymorphisms (SNP) has become a standard practice for major crops in plant breeding companies. 
+The two major applications for molecular marker data in agriculture and biology are the prediction 
+of genetic values \ref{Heffner2009,Jannink2010} and the detection of quantitative trait loci (QTL) 
+\ref{Bernardo2008}. Genome-wide association studies (GWAS) have emerged as a great tool for the 
+localization of QTL in breeding programs with material of varying degrees of population structure
+\ref{Bush2012}. In order to reduce the number of false-positive signals for marker-trait associations,
+such structure needs to be accounted for \ref{Astle2009}. This problem is typically addressed through 
+the use of kinship matrices \textbf{K}, which are estimated from molecular marker data \ref{VanRaden2008}.
+Unless a QTL itself is localized directly, there is a necessity for linkage disequilibrium (LD) between
+the QTL and neighboring SNP markers, which is the squared Pearson correlation between pairs of genetic
+markers \ref{Hill1968}. However, the power at a SNP decreases when it, or a marker in LD therewith,
+is simultaneously used for the computation of \textbf{K} as well as for testing marker-trait 
+associations \ref{Listgarten2012}. Hence, we are addressing this problem by visualizing the distance
+between pairs of markers at which they are not considered to be in LD anymore. Such markers can be 
+selected by researchers for the computation of \textbf{K}. Moreover, this method can aid the elucidation
+of selection patterns on the chromosome. As an example, we are using data from chromosome 1 of a maize 
+population consisting of 123 Eupean Dent inbred lines and 114 European Flint inbred lines
+\ref{Fischer2008}. Figure~\ref{SchnabelTorrettaWesthues:fig1}~(A) shows the typical LD decay plot 
 for this part of the genome. 
 
 %\begin{itemize}
@@ -168,13 +166,15 @@ As a recurring example in this manuscript we are using Chromosome 1 of the above
 	I don't like the second alternative..
 	
 	to ensure a monotone decreasing curve (that is 
-	in line with the underlying biological assumptions). In the following we show the 
-	results only for the median curves. However, this analysis can be done for any quantile  
+	in line with the underlying biological assumptions). In the following, we show the 
+	results only for the median curves. However, this analysis can be done for any quantile.  
 	In Figure~\ref{SchnabelTorrettaWesthues:fig1}~B the median curve is 
 	plotted as well as a threshold in terms of $R^2$ taken as 
-	0.1. For exploration of local LD decay we are interested in the distance $\Delta_{0.5}$ from 
-	which onwards the LD decay in falling beneath the threshold. \textcolor{red}{(Matthias: This can be interpreted
-	 as...?)}
+	0.1. For the exploration of local LD decay we are interested in the distance $\Delta_{0.5}$ from 
+	which onwards the LD decay is falling beneath the threshold. This can be interpreted as the
+	average distance within this window from which on two marker loci are considered to be 
+	independent of each other. Such two markers could, for example, be selected for the computation
+	of \textbf{K}.
 	On Chromosome 1 of this population we have 1085 sliding windows \textcolor{blue}
 	{we have 1119 sliding windows in the main dataset but we actually used 1085 sliding windows after the corrections
 }
@@ -184,12 +184,13 @@ As a recurring example in this manuscript we are using Chromosome 1 of the above
 	at the respective center of the window. Local 
 	LD decay in terms of median distance at threshold 0.1 is 321709 bp. 
 	(We collect these data for a 
-	values $\tau$ that are of interest.) While these data points are an interested result as
+	values $\tau$ that are of interest.) While these data points are an interesting result as
 	such to quantify local LD decay, it is hard to judge by eye the relationship that is plotted in 
 	Figure~\ref{SchnabelTorrettaWesthues:fig1}~C. Therefore we used $P-$splines to fit a smooth curve to these results (as 
 	displayed by the green curve in Figure~\ref{SchnabelTorrettaWesthues:fig1}~D). For our example we detect a bi-modal form of the 
-	relationship. The red line in the graph indicated the so-called centromere \footnote{
-	Explanation centromere.} We have reason to believe that the left mode is around the centromere.   
+	relationship. The red line in the graph indicated the so-called centromere 
+	\footnote{Connects two sister chromatids and is characterized by very low recombination frequency.} 
+	We have reason to believe that the left mode is around the centromere.   
 %	bi-modality might be caused by 
 %	the position of the centromere with the median distance at threshold rapidly decreasing 
 %	around it (which is kind of logic??). 
@@ -307,24 +308,51 @@ visiting at Biometris at Wageningen University and Research Centre in winter 201
 % (Please follow the format of the examples very tightly).
 
 \references
-%\begin{description}
-%\item[Diggle, P.J., Liang, K-Y., and Zeger, S.L.] (1994).
-%     {\it Analysis of Longitudinal Data}.
-%     Oxford: Clarendon Press.
-%\item[Green, P.J. and Silverman, B.W.] (1994).
-%     {\it Nonparametric Regression and Generalized Linear Models}.
-%     London: Chapman \& Hall.
-%\item[Henderson, C.R.] (1973).
-%     Sire evaluation and genetic trends.
-%     In: {\it Proceedings of the Animal Breeding and Genetics Symposium in
-%     Honour of Dr.\ L.\ Lush}, Champaign, Illinois, 10\,--\,41.
-%\item[Lee, Y. and Nelder, J.A.] (1996).
-%     Hierarchical generalized linear models.
-%     {\it Journal of the Royal Statistical Society, Series B}, {\bf 58},
-%      619\,--\,678.
-%\item[Robinson, G.K.] (1991).
-%     That BLUP is a good thing: the estimation of random effects (with Discussion).
-%     {\it Statistical Science}, {\bf 6}, 15\,--\,51.
-%\end{description}
+\begin{description}
+\item[Astle, W. and Balding, D.J.] (2009).
+		Population Structure and Cryptic Relatedness in Genetic Association Studies.
+		{\it Statistical Science}, {\bf 24}, 451\,--\,471
+\item[Bernardo, R.] (2008). 
+		Molecular Markers and Selection for Complex Traits in Plants: Learning from the Last 20 Years.
+		{\it Crop Science}, {\bf 48}, 1649\,--\,1664
+\item[Bush, W.S. and Moore, J.H.] (2012).
+		Chapter 11: Genome-wide association studies.
+		{\it PLOS Computational Biology}, {\bf 8}, 1\,--\,11
+\item[Diggle, P.J., Liang, K-Y., and Zeger, S.L.] (1994).
+     {\it Analysis of Longitudinal Data}.
+     Oxford: Clarendon Press.
+\item[Fischer, S., M\"{o}hring, J., Sch\"{o}n, C. C., Piepho, H.-P., Klein, D., Schipprack, W., Utz, H.F., Melchinger, A.E., and Reif, J.C.] (2008).
+		Trends in genetic variance components during 30 years of hybrid maize breeding at the University of Hohenheim.
+		{\it Plant Breeding}, {\bf 127}, 446\,--\,451
+\item[Green, P.J. and Silverman, B.W.] (1994).
+     {\it Nonparametric Regression and Generalized Linear Models}.
+     London: Chapman \& Hall.
+\item[Heffner, E.L., Sorrells, M.E., and Jannink, J.L.] (2009).
+		Genomic Selection for Crop Improvement. 
+		{\it Crop Science}, {\bf 49}, 1\,--\,12
+\item[Henderson, C.R.] (1973).
+     Sire evaluation and genetic trends.
+     In: {\it Proceedings of the Animal Breeding and Genetics Symposium in
+     Honour of Dr.\ L.\ Lush}, Champaign, Illinois, 10\,--\,41.
+\item[Hill, W.G. and Robertson, A.] (1968).
+		Linkage Disequilibrium in Finite Populations.
+		{\it Theoretical and Applied Genetics}, {\bf 38}, 226\,--\,231		
+\item[Jannink, J.L., Lorenz, A.J. and Iwata, H.] (2010).
+		Genomic selection in plant breeding: from theory to practice.
+		{\it Briefings in functional genomics}, {\bf 9}, 166\,--\,177
+\item[Lee, Y. and Nelder, J.A.] (1996).
+     Hierarchical generalized linear models.
+     {\it Journal of the Royal Statistical Society, Series B}, {\bf 58},
+      619\,--\,678.
+\item[Listgarten, J., Lippert, C., Kadie, C.M., Davidson, R.I., Eskin, E., and Heckerman, D.] (2012). 
+		Improved linear mixed models for genome-wide association studies.
+		{\it Nature methods}, {\bf 9}, 525\,--\,526
+\item[Robinson, G.K.] (1991).
+     That BLUP is a good thing: the estimation of random effects (with Discussion).
+     {\it Statistical Science}, {\bf 6}, 15\,--\,51.
+\item[VanRaden, P.M.] (2008).
+		Efficient methods to compute genomic predictions.
+		{\it Journal of dairy science}, {\bf 91}, 4414\,--\,4423
+\end{description}
 
 \end{document}
