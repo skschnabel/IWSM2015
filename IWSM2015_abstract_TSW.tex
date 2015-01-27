@@ -118,7 +118,7 @@ might be a problem
 that is commonly encountered \textcolor{green}{(reference big data in agriculture?)}. 
 Management, exploration and 
 analysis of these data is imposing problems. Already the exploratory analysis of such data 
-can be challenging. In this case study we focus in the quantification of linkage desequilibrium 
+can be challenging. In this case study we focus in the quantification of linkage disequilibrium 
 decay (LD decay). LD decay is usually visualized against the distance of two markers 
 on a selected chromosome. The decay is basically measured in terms of correlation between 
 pairs of genetic markers. Typically there are thousands of markers available for a plant 
@@ -162,11 +162,11 @@ As a recurring example in this manuscript we are using Chromosome 1 of the above
 	in Figure~\ref{SchnabelTorrettaWesthues:fig1}~B. 
 	We are using quantile 
 	regression with a monotonicity constraint,
-	\textcolor{blue}{$\mu_{\tau}=s_{\tau}(dist)$, where $\mu_\tau$ is the quantile function at percentile $\tau$, $dist$ is the SNP distance between couples of markers and $s_{\tau}(\cdot)$ is a smooth and unknown function.
+	$\mu_{\tau}=s_{\tau}(dist)$, where $\mu_\tau$ is the quantile function at percentile $\tau$, $dist$ is the SNP distance between couples of markers and $s_{\tau}(\cdot)$ is a smooth and unknown function.
 	If you want to specify the monotonicity constraints I need to be more formal, like
-	$\min\sum_k^K b_{k\tau} B_k(dist)$ subject to $b_k>b_{k-1}$ for $k=2,\dots,K$, where b_{k\tau} is the coefficient of the B_k-th spline and $K$ is the dimension of the design matrix. 
+	$\min\sum_k^K b_{k\tau} B_k(dist)$ subject to $b_k>b_{k-1}$ for $k=2,\dots,K$, where $b_{k\tau}$ is the coefficient of the $B_k$-th spline and $K$ is the dimension of the design matrix. 
 	I don't like the second alternative..
-	}
+	
 	to ensure a monotone decreasing curve (that is 
 	in line with the underlying biological assumptions). In the following we show the 
 	results only for the median curves. However, this analysis can be done for any quantile  
@@ -175,7 +175,7 @@ As a recurring example in this manuscript we are using Chromosome 1 of the above
 	0.1. For exploration of local LD decay we are interested in the distance $\Delta_{0.5}$ from 
 	which onwards the LD decay in falling beneath the threshold. \textcolor{red}{(Matthias: This can be interpreted
 	 as...?)}
-	On Chromosome 1 of this population we have 1119 sliding windows \textcolor{blue}
+	On Chromosome 1 of this population we have 1085 sliding windows \textcolor{blue}
 	{we have 1119 sliding windows in the main dataset but we actually used 1085 sliding windows after the corrections
 }
 	 of 2.5Mbp with an 
