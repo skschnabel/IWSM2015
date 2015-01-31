@@ -117,17 +117,17 @@ localization of QTL in breeding programs with material of varying degrees of pop
 In order to reduce the number of false-positive signals for marker-trait associations,
 such structure needs to be accounted for (Astle and Balding, 2009). This problem is 
 typically addressed through 
-the use of kinship matrices \textbf{K}, which are estimated from molecular marker data 
+the use of kinship matrices estimated from molecular marker data 
 (VanRaden, 2008).
 Unless a QTL itself is localized directly, there is a necessity for linkage disequilibrium (LD) between
 the QTL and neighboring SNP markers, which is the squared Pearson correlation between pairs of genetic
 markers (Hill and Robertson, 1968). However, the power at a SNP decreases when it, 
 or a marker in LD therewith,
-is simultaneously used for the computation of \textbf{K} as well as for testing marker-trait 
+is simultaneously used for the computation of a kinship matrix as well as for testing marker-trait 
 associations (Listgarten et al., 2012). 
 Hence, we are addressing this problem by visualizing the distance
 between pairs of markers at which they are not considered to be in LD anymore. Such markers can be 
-selected by researchers for the computation of \textbf{K}. Moreover, this method can aid 
+selected by researchers for the computation of a kinship matrix. Moreover, this method can aid 
 the elucidation
 of selection patterns on the chromosome. As an example, we are using data from chromosome 1 of a maize 
 population consisting of 123 European Dent inbred lines and 114 European Flint inbred lines
@@ -153,8 +153,8 @@ for this part of the genome.
 \section{Analysis and Application}
 
 As a recurring example in this manuscript we are using Chromosome 1 of the above described 
-	Maize genome. We have 5066 markers 
-	on this chromosome, resulting in 12833086 distances 
+	Maize genome. We have 970 markers 
+	on this chromosome, resulting in 469965 distances 
 	between two markers on the same chromosome. A plot of the LD decay (measured in $R^2$) 
 	for these distances (in base pairs - bp) can be found 
 	in Figure~\ref{SchnabelTorrettaWesthues:fig1}~A. 
@@ -167,11 +167,15 @@ As a recurring example in this manuscript we are using Chromosome 1 of the above
 	in Figure~\ref{SchnabelTorrettaWesthues:fig1}~B. 
 	We are using quantile 
 	regression with a monotonicity constraint,
-	$\mu_{\tau}=s_{\tau}(dist)$, where $\mu_\tau$ is the quantile function at percentile $\tau$, $dist$ is the SNP distance between couples of markers and $s_{\tau}(\cdot)$ is a smooth and unknown function. (Muggeo et al., 2013; Bollaerts et al., 200X).
-	If you want to specify the monotonicity constraints I need to be more formal, like
-	$\min\sum_k^K b_{k\tau} B_k(dist)$ subject to $b_k>b_{k-1}$ for $k=2,\dots,K$, where $b_{k\tau}$ is the coefficient of the $B_k$-th spline and $K$ is the dimension of the design matrix. 
-	I don't like the second alternative..
-	
+	$\mu_{\tau}=s_{\tau}(dist)$, where $\mu_\tau$ is the quantile function at percentile $\tau$, $dist$ is the SNP distance between couples of markers and $s_{\tau}(\cdot)$ is a smooth and unknown function. (Muggeo et al., 2013; Bollaerts et al., 2006).
+	\colorbox{yellow}{If you want to specify the monotonicity constraints I need to be more 
+	formal,} 
+	\colorbox{yellow}{like
+	$\min\sum_k^K b_{k\tau} B_k(dist)$ subject to $b_k>b_{k-1}$ for $k=2,\dots,K$, 
+	where $b_{k\tau}$}
+	\colorbox{yellow}{is the coefficient of the $B_k$-th spline and $K$ is the dimension of the design}
+	\colorbox{yellow}{ matrix. 
+	I don't like the second alternative.}
 	to ensure a monotone decreasing curve (that is 
 	in line with the underlying biological assumptions). In the following, we show the 
 	results only for the median curves. However, this analysis can be done for any quantile.  
@@ -181,7 +185,7 @@ As a recurring example in this manuscript we are using Chromosome 1 of the above
 	which onwards the LD decay is falling beneath the threshold. This can be interpreted as the
 	average distance within this window from which on two marker loci are considered to be 
 	independent of each other. Such two markers could, for example, be selected for the computation
-	of \textbf{K}.
+	of a kinship matrix.
 	On Chromosome 1 of this population we have 1085 sliding windows
 	 of 2.5Mbp with an 
 	average of 2024 points falling in one window. The distances 
@@ -284,7 +288,7 @@ While the presented steps are a good tool to quantify local LD decay, they have 
 
 \begin{figure}[bt!]\centering
 % You can pre-specify the width of the graph:
-\includegraphics[width=8cm]{exFig.pdf}
+	\includegraphics[width=0.8\textwidth]{Figure1_draft.pdf}
 % Below the figure, a caption is put, and a label is defined
 % to be used for reference to this specific figure.
 % Use labels which are very unlikely to be used by
