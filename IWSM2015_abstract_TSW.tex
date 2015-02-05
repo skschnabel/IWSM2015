@@ -90,7 +90,15 @@ The Netherlands \and Universit\`a di Palermo, Italy \and Universit\"at Hohenheim
 \email{sabine.schnabel@wur.nl}
 
 % Brief abstract of the paper:
-\abstract{Still missing.}
+\abstract{Placeholder for abstract: Genome-wide association studies (GWAS) have emerged as a 
+great tool for the localization of QTLs (quantitative trait loci) in plant and animal breeding programs 
+with material of varying degrees of population structure (Bush and Moore, 2012). 
+In order to reduce the number of false-positive signals for marker-trait associations,
+such structure needs to be accounted for (Astle and Balding, 2009). This problem is 
+typically addressed through the use of kinship matrices. Genome-wide association studies 
+(GWAS) have emerged as a great tool for the 
+localization of QTLs (quantitative trait loci) in plant and animal breeding programs 
+with -- maximum length of abstract.}
 
 % Keywords (at most 5):
 \keywords{Quantile regression; smoothing; monotonicity; linkage; LD decay}
@@ -105,29 +113,32 @@ The Netherlands \and Universit\`a di Palermo, Italy \and Universit\"at Hohenheim
 
 \section{Introduction and Motivation}
 
-Within the past decade, highly abundant molecular marker data have become available in biological 
-and agricultural research. The use of genotyping chips with more than 50,000 single nucleotide 
-polymorphisms (SNP) has become a standard practice for major crops in plant breeding companies. 
-The two major applications for molecular marker data in agriculture and biology are the prediction 
-of genetic values (Heffner et al., 2009; Jannink et al., 2010) 
-and the detection of quantitative trait loci (QTL) 
-(Bernardo, 2008). Genome-wide association studies (GWAS) have emerged as a great tool for the 
-localization of QTL in breeding programs with material of varying degrees of population structure
-(Bush and Moore, 2012). 
+%Within the past decade, highly abundant molecular marker data have become available in biological 
+%and agricultural research. The use of genotyping chips with more than 50,000 single nucleotide 
+%polymorphisms (SNP) has become a standard practice for major crops in plant breeding companies. 
+%The two major applications for molecular marker data in agriculture and biology are the prediction 
+%of genetic values (Heffner et al., 2009; Jannink et al., 2010) 
+%and the detection of quantitative trait loci (QTL) 
+%(Bernardo, 2008). 
+Genome-wide association studies (GWAS) have emerged as a great tool for the 
+localization of QTLs (quantitative trait loci) in plant and animal breeding programs 
+with material of varying degrees of population structure (Bush and Moore, 2012). 
 In order to reduce the number of false-positive signals for marker-trait associations,
 such structure needs to be accounted for (Astle and Balding, 2009). This problem is 
 typically addressed through 
-the use of kinship matrices estimated from molecular marker data 
-(VanRaden, 2008).
+the use of kinship matrices estimated from molecular marker data (VanRaden, 2008).
 Unless a QTL itself is localized directly, there is a necessity for linkage disequilibrium (LD) between
 the QTL and neighboring SNP markers, which is the squared Pearson correlation between pairs of genetic
-markers (Hill and Robertson, 1968). However, the power at a SNP decreases when it, 
-or a marker in LD therewith,
+markers (Hill and Robertson, 1968). However, the power at a SNP (single nucleotide polymorphism)
+ decreases when it, or a marker in LD therewith,
 is simultaneously used for the computation of a kinship matrix as well as for testing marker-trait 
 associations (Listgarten et al., 2012). 
 Hence, we are addressing this problem by visualizing the distance
-between pairs of markers at which they are not considered to be in LD anymore. Such markers can be 
-selected by researchers for the computation of a kinship matrix. Moreover, this method can aid 
+between pairs of markers at which they are not considered to be in LD anymore. 
+%Such markers can be 
+%selected by researchers for the computation of a kinship matrix. 
+%Moreover, 
+This method can aid 
 the elucidation
 of selection patterns on the chromosome. As an example, we are using data from chromosome 1 of a maize 
 population consisting of 123 European Dent inbred lines and 114 European Flint inbred lines
@@ -153,52 +164,59 @@ for this part of the genome.
 \section{Analysis and Application}
 
 As a recurring example in this manuscript we are using Chromosome 1 of the above described 
-	Maize genome. We have 970 markers 
-	on this chromosome, resulting in 469965 distances 
-	between two markers on the same chromosome. A plot of the LD decay (measured in $R^2$) 
-	for these distances (in base pairs - bp) can be found 
+Maize genome. We have almost 5000 markers on this chromosome, resulting in more than 12 million distances 
+	between two markers on the same chromosome. Visualization of these large data sets is 
+	challenging. We used a scatterplot smoother (Eilers and Goeman, 2004) for depicting
+	global LD decay (measured in $R^2$) on chromosome 1 (length $\approx$ 300 Mbp (Mega base pairs))   
 	in Figure~\ref{SchnabelTorrettaWesthues:fig1}~A. 
-	In a study of global 
-	LD decay we would be interested to model the relationship over the whole length of chromosome 1 ($\approx$ 300 Mbp (Mega base pairs)). 
+%	In a study of global 
+%	LD decay we would be interested to model the relationship over the whole length of chromosome 1 
+%	($\approx$ 300 Mbp (Mega base pairs)). 
 	In our case it is of interest to have a look what happens to 
-	LD decay at a smaller scale. Therefore we investigate local LD decay in subsequent 
+	LD decay on a smaller scale. Therefore we investigate local LD decay in subsequent 
 	overlapping sliding windows of 2.5Mbp and fit a set of quantile curves to these 
 	sections on the whole plot. One such fit for $\tau = 0.5$ is depicted 
 	in Figure~\ref{SchnabelTorrettaWesthues:fig1}~B. 
 	We are using quantile 
 	regression with a monotonicity constraint,
-	$\mu_{\tau}=s_{\tau}(dist)$, where $\mu_\tau$ is the quantile function at percentile $\tau$, $dist$ is the SNP distance between couples of markers and $s_{\tau}(\cdot)$ is a smooth and unknown function. (Muggeo et al., 2013; Bollaerts et al., 2006).
-	\colorbox{yellow}{If you want to specify the monotonicity constraints I need to be more 
-	formal,} 
-	\colorbox{yellow}{like
-	$\min\sum_k^K b_{k\tau} B_k(dist)$ subject to $b_k>b_{k-1}$ for $k=2,\dots,K$, 
-	where $b_{k\tau}$}
-	\colorbox{yellow}{is the coefficient of the $B_k$-th spline and $K$ is the dimension of the design}
-	\colorbox{yellow}{ matrix. 
-	I don't like the second alternative.}
-	to ensure a monotone decreasing curve (that is 
+	$\mu_{\tau}=s_{\tau}(dist)$, where $\mu_\tau$ is the quantile function at 
+	percentile $\tau$, $dist$ is the SNP distance between pairs of markers and 
+	$s_{\tau}(\cdot)$ is a smooth and unknown function (Muggeo et al., 2013; Bollaerts et al., 2006). 
+	We choose $B-$splines for a smooth functional form. By imposing 
+	$b_k>b_{k-1}$ with $b_{k\tau}$ coefficient of the $B_k$-th spline 
+%	
+%	\colorbox{yellow}{If you want to specify the monotonicity constraints I need to be more 
+%	formal,} 
+%	\colorbox{yellow}{like
+%	$\min\sum_k^K b_{k\tau} B_k(dist)$ subject to $b_k>b_{k-1}$ for $k=2,\dots,K$, 
+%	where $b_{k\tau}$}
+%	\colorbox{yellow}{is the coefficient of the $B_k$-th spline and $K$ is the dimension of the design}
+%	\colorbox{yellow}{ matrix. 
+%	I don't like the second alternative.}
+	a monotone decreasing curve is ensured (that is 
 	in line with the underlying biological assumptions). In the following, we show the 
-	results only for the median curves. However, this analysis can be done for any quantile.  
-	In Figure~\ref{SchnabelTorrettaWesthues:fig1}~B the median curve is 
+	results only for the median curves. However, this analysis can be done for any quantile 
+	of interest. In Figure~\ref{SchnabelTorrettaWesthues:fig1}~B the median curve is 
 	plotted as well as a threshold in terms of $R^2$ taken as 
 	0.1. For the exploration of local LD decay we are interested in the distance $\Delta_{0.5}$ from 
 	which onwards the LD decay is falling beneath the threshold. This can be interpreted as the
 	average distance within this window from which on two marker loci are considered to be 
 	independent of each other. Such two markers could, for example, be selected for the computation
-	of a kinship matrix.
-	On Chromosome 1 of this population we have 1085 sliding windows
+	of a kinship matrix. In the example local 
+		LD decay in terms of median distance at threshold 0.1 is 321709 bp. 
+	On Chromosome 1 of this population we have about 1000 sliding windows
 	 of 2.5Mbp with an 
-	average of 2024 points falling in one window. The distances 
-	$\Delta_{0.5}$ for all the sliding windows are collected and plotted in Figure C 
-	at the respective center of the window. Local 
-	LD decay in terms of median distance at threshold 0.1 is 321709 bp. 
-	(We collect these data for a 
-	values $\tau$ that are of interest.) While these data points are an interesting result as
+	average of 2000 points falling in one window. The distances 
+	$\Delta_{\tau}$ for all sliding windows are collected and plotted 
+	in Figure~\ref{SchnabelTorrettaWesthues:fig1}~C 
+	at the respective center of the window. We collect these data for a 
+	values $\tau$ that are of interest. While these data points are an interesting result as
 	such to quantify local LD decay, it is hard to judge by eye the relationship that is plotted in 
 	Figure~\ref{SchnabelTorrettaWesthues:fig1}~C. Therefore we used $P-$splines to fit a smooth curve to these results (as 
-	displayed by the green curve in Figure~\ref{SchnabelTorrettaWesthues:fig1}~D). For our example we detect a bi-modal form of the 
-	relationship. The red line in the graph indicated the so-called centromere 
-	\footnote{Connects two sister chromatids and is characterized by very low recombination frequency.} 
+	displayed by the curve in Figure~\ref{SchnabelTorrettaWesthues:fig1}~D). 
+	For our example we detect a bi-modal form of the 
+	relationship. The black line in the graph indicated the so-called centromere. 
+%	\footnote{Connects two sister chromatids and is characterized by very low recombination frequency.} 
 	We have reason to believe that the left mode is around the centromere.   
 %	bi-modality might be caused by 
 %	the position of the centromere with the median distance at threshold rapidly decreasing 
@@ -250,12 +268,15 @@ On top of that we are applying $P-$splines to smooth the median local LD decay. 
 are easier to interpret and inspect for the collaborating biologists. 
 
 While the presented steps are a good tool to quantify local LD decay, they have also been 
-	instrumental in identifying problems with the genotyping that have previously been 
+	instrumental in identifying problems with the underlying genotypic data that have previously been 
 	overlooked. On the one hand we discovered sliding windows with low sample sizes which suggests 
 	undercoverage in certain distances in LD decay. 
-	While fitting the smooth curves in Figure~\ref{SchnabelTorrettaWesthues:fig1}~D we observed a noticeable clustering 
+	While fitting the smooth curves in Figure~\ref{SchnabelTorrettaWesthues:fig1}~D we 
+	observed a noticeable clustering 
 	in terms of $R^2$ values in some of the subsets of the data. This phenomenon was unknown 
-	to date in this data set and has lead to reconsiderations of the data quality.
+	to date in this data set and has lead to reconsiderations of the data quality. 
+	
+More results from this case study will be reported elsewhere.
 
 %\begin{itemize}
 %\item Use of monotone quantile regression and spline smoothing for exploring 
@@ -294,10 +315,11 @@ While the presented steps are a good tool to quantify local LD decay, they have 
 % Use labels which are very unlikely to be used by
 % other contributors; for example, use labels starting
 % with the surname of the first author.
-\caption{\label{SchnabelTorrettaWesthues:fig1} (A) Plot of LD decay for Chromosome 1. (B) Sample of 
+\caption{\label{SchnabelTorrettaWesthues:fig1} (A) Plot of LD decay for Chromosome 1 
+using \texttt{scattersmooth}. (B) Sample of 
 data with threshold and $\Delta_{0.5}$ indication. (C) Collection of $\Delta_{0.25,0.5,0.75}$ in 
-Red/Green/Blue for Chromosome 1 at center of the sliding window. 
-(D) Smooth fit with indication of the the centromere.}
+Red/Green/Blue for Chromosome 1 at center of the sliding window with indication of the centromere. 
+(D) Smooth fit to $\Delta_{0.5}$.}
 \end{figure}
 
 
@@ -308,7 +330,7 @@ Red/Green/Blue for Chromosome 1 at center of the sliding window.
 %***********************************************************************
 
 % Acknowledgments, if needed:
-\acknowledgments{This case study was performed while the first and third author were 
+\acknowledgments{This case study was performed while the second and third author were 
 visiting at Biometris at Wageningen University and Research Centre in winter 2014/2015. We are indebted to the group of Prof. Dr. Ruedi Fries, from Technische Universit\"at M\"unchen, for the SNP genotyping of the parental lines, which was funded by the German Federal Ministry of Education and Research (BMBF)  within the AgroClustEr “Synbreed—Synergistic plant and animal breeding” (FKZ:0315528d).}
 
 %***********************************************************************
@@ -322,40 +344,31 @@ visiting at Biometris at Wageningen University and Research Centre in winter 201
 \item[Astle, W. and Balding, D.J.] (2009).
 		Population Structure and Cryptic Relatedness in Genetic Association Studies.
 		{\it Statistical Science}, {\bf 24}, 451\,--\,471
-\item[Bernardo, R.] (2008). 
-		Molecular Markers and Selection for Complex Traits in Plants: Learning from the Last 20 Years.
-		{\it Crop Science}, {\bf 48}, 1649\,--\,1664
+%\item[Bernardo, R.] (2008). 
+%		Molecular Markers and Selection for Complex Traits in Plants: Learning from the Last 20 Years.
+%		{\it Crop Science}, {\bf 48}, 1649\,--\,1664
 		
 \item[Bollaerts, K., Eilers, P.H.C. and M. Aerts] (2006). Quantile regression with monotonicity restrictions using P-splines and the L1-norm. {\it Statistical Modelling}, {\bf 6}, 189\,--\,207 
 \item[Bush, W.S. and Moore, J.H.] (2012).
 		Chapter 11: Genome-wide association studies.
 		{\it PLOS Computational Biology}, {\bf 8}, 1\,--\,11
-%\item[Diggle, P.J., Liang, K-Y., and Zeger, S.L.] (1994).
-%     {\it Analysis of Longitudinal Data}.
-%     Oxford: Clarendon Press.
+
+\item[Eilers, P.H.C. and Goeman, J.J.] (2004).
+	Enhancing scatterplots with smoothed density.
+	{\it Bioinformatics}, {\bf 20}, 623\,--\,628.
+
 \item[Fischer, S., M\"{o}hring, J., Sch\"{o}n, C. C., Piepho, H.-P., Klein, D., Schipprack, W.,] {Utz, H.F., Melchinger, A.E., and Reif, J.C.} (2008).
 		Trends in genetic variance components during 30 years of hybrid maize breeding at the University of Hohenheim.
 		{\it Plant Breeding}, {\bf 127}, 446\,--\,451
-%\item[Green, P.J. and Silverman, B.W.] (1994).
-%     {\it Nonparametric Regression and Generalized Linear Models}.
-%     London: Chapman \& Hall.
-\item[Heffner, E.L., Sorrells, M.E., and Jannink, J.L.] (2009).
-		Genomic Selection for Crop Improvement. 
-		{\it Crop Science}, {\bf 49}, 1\,--\,12
-%\item[Henderson, C.R.] (1973).
-%     Sire evaluation and genetic trends.
-%     In: {\it Proceedings of the Animal Breeding and Genetics Symposium in
-%     Honour of Dr.\ L.\ Lush}, Champaign, Illinois, 10\,--\,41.
+%\item[Heffner, E.L., Sorrells, M.E., and Jannink, J.L.] (2009).
+%		Genomic Selection for Crop Improvement. 
+%		{\it Crop Science}, {\bf 49}, 1\,--\,12
 \item[Hill, W.G. and Robertson, A.] (1968).
 		Linkage Disequilibrium in Finite Populations.
 		{\it Theoretical and Applied Genetics}, {\bf 38}, 226\,--\,231		
-\item[Jannink, J.L., Lorenz, A.J. and Iwata, H.] (2010).
-		Genomic selection in plant breeding: from theory to practice.
-		{\it Briefings in Functional Genomics}, {\bf 9}, 166\,--\,177
-%\item[Lee, Y. and Nelder, J.A.] (1996).
-%     Hierarchical generalized linear models.
-%     {\it Journal of the Royal Statistical Society, Series B}, {\bf 58},
-%      619\,--\,678.
+%\item[Jannink, J.L., Lorenz, A.J. and Iwata, H.] (2010).
+%		Genomic selection in plant breeding: from theory to practice.
+%		{\it Briefings in Functional Genomics}, {\bf 9}, 166\,--\,177
 \item[Listgarten, J., Lippert, C., Kadie, C.M., Davidson, R.I., Eskin, E., and Heckerman, D.] (2012). 
 		Improved linear mixed models for genome-wide association studies.
 		{\it Nature Methods}, {\bf 9}, 525\,--\,526
@@ -363,9 +376,6 @@ visiting at Biometris at Wageningen University and Research Centre in winter 201
 \item [Muggeo V. , Sciandra M., Tomasello A., Calvo S.] (2013) Estimating growth charts via 		
 		nonparametric quantile regression: a practical framework with application in Ecology. 
 		{\it Environmental and Ecological Statistics}, 20, 519\,--\,531. 		
-%\item[Robinson, G.K.] (1991).
-%     That BLUP is a good thing: the estimation of random effects (with Discussion).
-%     {\it Statistical Science}, {\bf 6}, 15\,--\,51.
 \item[VanRaden, P.M.] (2008).
 		Efficient methods to compute genomic predictions.
 		{\it Journal of Dairy Science}, {\bf 91}, 4414\,--\,4423
