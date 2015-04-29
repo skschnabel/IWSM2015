@@ -90,13 +90,13 @@ Maize genome has almost 5000 markers, resulting in more than
 	LD decay on a smaller scale. Therefore we investigate local LD decay in subsequent 
 	overlapping sliding windows of 2.5 Mbp width and fit a set of quantile curves to each of these 
 	sections on the whole plot.  
-	We use quantile 
+	We use a non-parametric quantile 
 	regression with a monotonicity constraint,
 	$\mu_{\tau}=s_{\tau}(d)$, where $\mu_\tau$ is the quantile function at 
 	percentile $\tau$, $d$ is the SNP distance between pairs of markers and 
 	$s_{\tau}(\cdot)$ is a smooth and unknown function (Muggeo et al., 2013; Bollaerts et al., 2006). 
-	We choose $B-$splines for a smooth functional form. By imposing 
-	$b_k<b_{k-1}$, with $b_{k}$ coefficient of the $B_k$-th spline, 
+	We choose $P-$splines for a smooth functional form. By imposing 
+	$b_k<b_{k-1}$, with $b_{k}$ coefficient of the $P_k$-th spline, 
 	a monotone decreasing curve is ensured (that is 
 	in line with the underlying biological assumptions). This analysis can be done for any quantile 
 	of interest. In Figure~\ref{SchnabelTorrettaWesthues:fig1}~(B) quantile curves for 
@@ -121,7 +121,7 @@ Maize genome has almost 5000 markers, resulting in more than
 	Therefore we used $P-$splines to fit a smooth curve to these results as 
 	displayed by the curve in Figure~\ref{SchnabelTorrettaWesthues:fig1}~(D). 
 	For our example, we detect a bi-modal form of the 
-	relationship. The black line in the graph indicates the so-called centromere. 
+	relationship. The black vertical line in the graph indicates the so-called centromere. 
 	We have reason to believe that the left mode is around the centromere.   
 	However, this bi-modal phenomenon could not be observed for 
 	all of the 10 chromosomes in this data set.   
