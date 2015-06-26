@@ -94,7 +94,7 @@ bgColorTwo=udsect
 	localization of QTLs (quantitative trait loci) in plant and animal breeding programs.
 	\item Investigation of the genetic relatedness (kinship matrix) required for powerful GWAS %\citep{astle2009} 
 		\begin{itemize}[leftmargin=*]
-		\item[$\rightarrow$] Insight into LD between genetic markers necessary \citep{Listgarten2012}
+		\item[$\rightarrow$] Insight into LD between genetic markers necessary %\citep{Listgarten2012}
 		\end{itemize}
 \end{itemize}  
 %For an appropriate kinship matrix, insight into LD between 
@@ -115,17 +115,18 @@ bgColorTwo=udsect
 %
 \hspace{0.4cm}
 \begin{minipage}{0.33 \textwidth}
-Figure 1(A)
-%Simulated data from maize \citep{Wimmer01082012}
-%\begin{center}
-%\vspace{-0.5cm}
-%\includegraphics[width=0.8\linewidth]{SchnabelFigureData_maize}
-%\end{center}
-%\vspace{-0.2cm}
+\vspace{0.5cm}
+\centering
+Global LD decay on Chromosome 1
+\begin{center}
+\vspace{-1.5cm}
+\includegraphics[width=0.8\linewidth]{SchnabelTorrettaWesthuesFigure1A}
+\end{center}
+\vspace{-0.2cm}
 \end{minipage}
 %
-\hfill
-%\hspace{0.6cm}
+%\hfill
+\hspace{0.6cm}
 \begin{minipage}{0.3 \textwidth}
 \begin{itemize}[leftmargin=*]
 	\item Find suitable set of independent markers 
@@ -142,16 +143,16 @@ Figure 1(A)
 %\citep{Fischer2008}. Figure~\ref{SchnabelTorrettaWesthues:fig1}(A) shows an LD decay plot 
 %for this part of the genome.\\
 %\vspace{-1.4cm}
-We are proposing the following approach:
-\begin{itemize}[leftmargin=*]
-\item Describe the steps
-%\item Summarize the data on a grid \newline $\rightarrow$ 2D histogram 
-%\item Estimate expectile curves using:
-%	\begin{itemize}[leftmargin=*]
-%		\item Fast matrix calculations
-%		\item Discrete smoother with weights	  
-%	\end{itemize}	
-\end{itemize}
+%We are proposing the following approach:
+%\begin{itemize}[leftmargin=*]
+%\item Describe the steps
+%%\item Summarize the data on a grid \newline $\rightarrow$ 2D histogram 
+%%\item Estimate expectile curves using:
+%%	\begin{itemize}[leftmargin=*]
+%%		\item Fast matrix calculations
+%%		\item Discrete smoother with weights	  
+%%	\end{itemize}	
+%\end{itemize}
 \end{minipage}
 }%
 
@@ -169,6 +170,7 @@ We are proposing the following approach:
 	\item  $P-$splines for a smooth functional form, therefore: \newline 
 $\min\sum_k^K b_{k\tau} B_k(d)$ subject to $b_k<b_{k-1}$ for $k=2,\ldots,K$, with $b_{k\tau}$
 	the coefficient of the $B_k$-th spline, $K$ the dimension of the design matrix.
+	\newline $\mbox{}$
 %\item 
 %	If you want to add something more you could include one of the following:
 %		\item \[w_{\tau,i} =\left\{
@@ -240,13 +242,24 @@ of Pearson's $R^2$.
 
 
 \headerbox{\textsc{Global/local LD}}{name=LD,column=2,below=introduction, bottomaligned=QR}{
-	In our case, it is of interest to examine what happens to 
-	LD decay on a smaller scale. Therefore we investigate local LD decay in subsequent 
-	overlapping sliding windows of 2.5 Mbp width and fit a set of quantile curves to each of these 
-	sections of the whole plot.  
+%
+%
+%	In our case, it is of interest to examine what happens to 
+%	LD decay on a smaller scale. Therefore we investigate local LD decay in subsequent 
+%	overlapping sliding windows of 2.5 Mbp width and fit a set of quantile curves to each of these 
+%	sections of the whole plot.  
 
 \begin{itemize}[leftmargin=*]
-\item Description local LD
+\item Usually analysis focusses on the global LD decay (per chromosome) $\rightarrow$ general picture about the 
+	linkage desequilibrium and linkage between the markers
+\item Here: emphasis on local LD decay to get more insights on a smaller scale
+	\begin{itemize}[leftmargin=*]
+	\item Overlapping sliding windows of 2.5 Mbp $\rightarrow$ around 1000 windows on chromosome 1 with on average 
+			2000 points per window
+	\item Fit a set of quantile curves to each of the windows (here $\tau=0.25, 0.5, 075$)
+	\item Choose threshold $T$ in terms of $R^2$ and collect the associated distances from whereon LD decay is 	
+		lower than $T$
+	\end{itemize}
 %	\item Expectiles are an interesting and useful alternative to quantiles.
 %	\item Fast and easy calculation using iteratively reweighted least squares 
 %	\item Estimation using LAWS
@@ -282,15 +295,19 @@ of Pearson's $R^2$.
 
 \headerbox{\textsc{Results}}{name=results,column=0, span=3 ,below=QR}{
 \begin{minipage}{0.24\textwidth}
-Figure 1B
+\vspace{-0.8cm}
+\includegraphics[width=0.95\linewidth]{SchnabelTorrettaWesthuesFigure1B}
 \end{minipage}
 %
 \begin{minipage}{0.24 \textwidth}
 Some text
 \end{minipage}
 %
+%\hfill
+\hspace{1.5cm}
 \begin{minipage}{0.48\textwidth}
-Figure 1C,D
+\vspace{-0.8cm}
+\includegraphics[width=0.95\linewidth]{SchnabelTorrettaWesthuesFigure1CD}
 \end{minipage}
 %\begin{minipage}{0.5\textwidth}
 %\begin{center}
@@ -319,25 +336,25 @@ Figure 1C,D
  quantile regression with monotonicity constraints for a first summary of the LD decay. 
 \item  Applying $P-$splines to smooth the median local LD decay $\rightarrow$ 
 	easy to interpret and inspect for the collaborating biologists 
-\item In addition to a good tool to quantify local LD decay $\rightarrow$ also an instrument in identifying 
-	problems with the underlying genotypic 
- 	data that have previously been 
- 	overlooked. 
+\item In depth exploration of local LD decay (in comparison to global LD decay) leads to
+		new insights.	
 \end{itemize}
 \end{minipage}
 %
 \hfill
 \begin{minipage}{0.48\textwidth}
- 	
- 	In this sense they can serve as a diagnostic tool. 
- 	On the one hand we discovered sliding windows with low sample sizes which suggests 
- 	undercoverage in certain distances in LD decay. 
- 	While fitting the smooth curves in Figure~\ref{SchnabelTorrettaWesthues:fig1}~(D), we 
- 	observed a noticeable clustering 
- 	in terms of correlation values in some of the subsets of the data. This phenomenon was unknown 
- 	to date in this data set and has lead to adjustments in subsequent data analyses. 
- 	
- More results from this case study will be reported elsewhere.
+\begin{itemize}[leftmargin=*]
+\item In addition to a good tool to quantify local LD decay $\rightarrow$ also an instrument in identifying 
+	problems with the underlying genotypic 
+ 	data that have previously been 
+ 	overlooked. 
+\item Can serve as a diagnostic tool
+	\begin{itemize}[leftmargin=*]
+	\item Discovering of undercoverage through sliding windows with low sample sizes
+	\item Clustering of correlation values $\rightarrow$ unknown phenomenon in the data, adjustment in subsequent 
+		analysis
+	\end{itemize}
+\end{itemize}	
  \end{minipage}
 % 	\item Adapt the grid algorithm for quantile curves using \citep{Schlossmacher1973}: \newline
 %		 $S= \sum_i |u_i| \rightarrow \tilde{S} = \sum_i u_i^2/|\tilde{u}_i|$, 
