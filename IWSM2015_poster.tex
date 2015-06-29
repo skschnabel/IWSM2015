@@ -87,14 +87,14 @@ bgColorTwo=udsect
 %\headerbox{\textsc{Introduction}}{name=introduction,column=0,row=0}{
 
 \headerbox{\textsc{Introduction}}{name=introduction,span=3, column=0, row=0}{
-\vspace{-0.5cm}
-\begin{minipage}{0.3 \textwidth}
+\vspace{-0.3cm}
+\begin{minipage}{0.33\textwidth}
 \begin{itemize}[leftmargin=*]
 	\item Genome-wide association studies: great tool for the 
 	localization of QTLs (quantitative trait loci) in plant and animal breeding programs.
 	\item Investigation of the genetic relatedness (kinship matrix) required for powerful GWAS %\citep{astle2009} 
 		\begin{itemize}[leftmargin=*]
-		\item[$\rightarrow$] Insight into LD between genetic markers necessary %\citep{Listgarten2012}
+		\item[$\rightarrow$] Insight into LD between genetic markers necessary \citep{Listgarten2012}
 		\end{itemize}
 \end{itemize}  
 %For an appropriate kinship matrix, insight into LD between 
@@ -113,25 +113,25 @@ bgColorTwo=udsect
 %pairs from thousands of markers
 \end{minipage}
 %
-\hspace{0.4cm}
+\hspace{0.1cm}
 \begin{minipage}{0.33 \textwidth}
-\vspace{0.5cm}
+\vspace{0.4cm}
 \centering
-Global LD decay on Chromosome 1
+LD decay on Chromosome 1
 \begin{center}
-\vspace{-1.5cm}
-\includegraphics[width=0.8\linewidth]{SchnabelTorrettaWesthuesFigure1A}
+\vspace{-1.0cm}
+\includegraphics[width=0.6\linewidth]{SchnabelTorrettaWesthuesFigure1A}
 \end{center}
-\vspace{-0.2cm}
+\vspace{-0.8cm}
 \end{minipage}
 %
-%\hfill
-\hspace{0.6cm}
-\begin{minipage}{0.3 \textwidth}
+\hspace{-0.5cm}
+\begin{minipage}{0.33 \textwidth}
+\vspace{-0.5cm}
 \begin{itemize}[leftmargin=*]
 	\item Find suitable set of independent markers 
 	\item Exploration of LD decay over the whole genome
-	\item LD is commonly measured in terms of the squared Pearson correlation coefficient $R^2$ between pairs 
+	\item LD (linkage disequilibrium) is commonly measured in terms of the squared Pearson correlation coefficient $R^2$ between pairs 
 		of genetic markers \citep{Hill1968}. 
 \end{itemize}
 %To find such a set of suitable markers (e.g. single nucleotide polymorphism -- SNP) we need 
@@ -167,9 +167,9 @@ Global LD decay on Chromosome 1
 	\item $\mu_{\tau}=s_{\tau}(d)$, $\mu_\tau$ quantile function at 
 	percentile $\tau$, $d$ SNP distance between pairs of markers and 
 	$s_{\tau}(\cdot)$ smooth and unknown function
-	\item  $P-$splines for a smooth functional form, therefore: \newline 
-$\min\sum_k^K b_{k\tau} B_k(d)$ subject to $b_k<b_{k-1}$ for $k=2,\ldots,K$, with $b_{k\tau}$
-	the coefficient of the $B_k$-th spline, $K$ the dimension of the design matrix.
+	\item  $P-$splines for a smooth functional form, therefore: \newline
+	$\min\sum_k^K b_{k\tau} B_k(d)$ subject to $b_k<b_{k-1}$ for $k=2,\ldots,K$, with $b_{k\tau}$
+	coefficient of the $B_k$-th spline of quantile $\tau$, $K$ dimension of the design matrix.
 	\newline $\mbox{}$
 %\item 
 %	If you want to add something more you could include one of the following:
@@ -197,7 +197,7 @@ $\min\sum_k^K b_{k\tau} B_k(d)$ subject to $b_k<b_{k-1}$ for $k=2,\ldots,K$, wit
 \item For these large data: visualization is difficult in a scatterplot. 
 \item Apply a scatterplot smoother \citep{Eilers22032004} 
 	\begin{itemize}[leftmargin=*]
-	\item[$\rightarrow$] computation of a
+	\item[$\rightarrow$] Computation of a
 			two-dimensional histogram, smoothing of the counts and display with a color map
 	\end{itemize}
 \item In order to improve the quality of the fit and the visualization $\rightarrow$ use of $\sqrt{|R|}$ instead 
@@ -252,12 +252,12 @@ of Pearson's $R^2$.
 \begin{itemize}[leftmargin=*]
 \item Usually analysis focusses on the global LD decay (per chromosome) $\rightarrow$ general picture about the 
 	linkage desequilibrium and linkage between the markers
-\item Here: emphasis on local LD decay to get more insights on a smaller scale
+\item Here: emphasis on local LD decay to get more insight on a smaller scale
 	\begin{itemize}[leftmargin=*]
 	\item Overlapping sliding windows of 2.5 Mbp $\rightarrow$ around 1000 windows on chromosome 1 with on average 
 			2000 points per window
 	\item Fit a set of quantile curves to each of the windows (here $\tau=0.25, 0.5, 075$)
-	\item Choose threshold $T$ in terms of $R^2$ and collect the associated distances from whereon LD decay is 	
+	\item Choose threshold $T$ in terms of $R^2$ and collect the associated distances $\Delta_{.}$ from whereon LD decay is 	
 		lower than $T$
 	\end{itemize}
 %	\item Expectiles are an interesting and useful alternative to quantiles.
@@ -295,19 +295,27 @@ of Pearson's $R^2$.
 
 \headerbox{\textsc{Results}}{name=results,column=0, span=3 ,below=QR}{
 \begin{minipage}{0.24\textwidth}
-\vspace{-0.8cm}
-\includegraphics[width=0.95\linewidth]{SchnabelTorrettaWesthuesFigure1B}
+\vspace{-1.1cm}
+\includegraphics[width=\linewidth]{SchnabelTorrettaWesthuesFigure1B}
+\vspace{-1.0cm}
 \end{minipage}
 %
-\begin{minipage}{0.24 \textwidth}
-Some text
+\begin{minipage}{0.28 \textwidth}
+\vspace{-0.45cm}
+\begin{description}[leftmargin=*]
+\item[Figure (1)] Quantile curves for $\tau=0.25, 0.5, 0.75$ for a subsample. The distance associated to 	
+		threshold $T$ is indicated at $\Delta_{0.25, 0.5, 0.75}$.
+\item[Figure (2)] Collection of $\Delta_{0.25,0.5,0.75}$ (with indication of centromere)
+\item[Figure (3)] Smooth fit to $\Delta_{0.5}$
+\end{description}
 \end{minipage}
 %
 %\hfill
-\hspace{1.5cm}
+\hspace{0.1cm}
 \begin{minipage}{0.48\textwidth}
-\vspace{-0.8cm}
-\includegraphics[width=0.95\linewidth]{SchnabelTorrettaWesthuesFigure1CD}
+\vspace{-1.1cm}
+\includegraphics[width=1\linewidth]{SchnabelTorrettaWesthuesFigure1CD}
+\vspace{-1.0cm}
 \end{minipage}
 %\begin{minipage}{0.5\textwidth}
 %\begin{center}
@@ -331,18 +339,20 @@ Some text
 \headerbox{\textsc{Conclusion and Discussion}}{name=beyond,column=0, span=3
  ,below=results}{
  \begin{minipage}{0.48\textwidth}
+ \vspace{-0.5cm}
 \begin{itemize}[leftmargin=*]
 \item Case study of how to explore and quantify local LD decay patterns in Maize using
  quantile regression with monotonicity constraints for a first summary of the LD decay. 
 \item  Applying $P-$splines to smooth the median local LD decay $\rightarrow$ 
 	easy to interpret and inspect for the collaborating biologists 
 \item In depth exploration of local LD decay (in comparison to global LD decay) leads to
-		new insights.	
+		new insight.	
 \end{itemize}
 \end{minipage}
 %
 \hfill
 \begin{minipage}{0.48\textwidth}
+\vspace{-0.05cm}
 \begin{itemize}[leftmargin=*]
 \item In addition to a good tool to quantify local LD decay $\rightarrow$ also an instrument in identifying 
 	problems with the underlying genotypic 
@@ -377,34 +387,54 @@ Some text
 %\end{center}
 %}
 
-\headerbox{\textsc{Acknowledgements}}{name=ack, column=0, span=2, below=beyond, above=bottom}{
+\headerbox{\textsc{Acknowledgements}}{name=ack, column=2, span=1, below=beyond, above=bottom}{
 %\vspace{-0.7cm}
-\begin{minipage}{0.7\linewidth}
+\begin{minipage}{1\linewidth}
+\small
 This case study was performed while FT and MW were 
-visiting at Biometris at Wageningen University and Research Centre in Winter 2014/2015. We are indebted to the group of Prof. Dr. Ruedi Fries, from Technische Universit\"at M\"unchen, for the SNP genotyping of the parental lines, which was funded by the German Federal Ministry of Education and Research (BMBF)  within the AgroClustEr ''Synbreed-Synergistic plant and animal breeding'' (FKZ:0315528d).
+visiting at Biometris at Wageningen University and Research Centre in Winter 2014/2015. We are indebted to the group of {Prof.Dr.} Ruedi Fries, Technische Universit\"at M\"unchen, for the SNP genotyping of the parental lines, funded by the German Federal Ministry of Education and Research (BMBF)  within the AgroClustEr ''Synbreed-Synergistic plant and animal breeding'' (FKZ:0315528d).\newline
+\end{minipage}
+
+\begin{minipage}{\linewidth}
+\begin{minipage}{0.33\linewidth}
+\includegraphics[scale=0.25]{wu}
 \end{minipage}
 %
-%\hfill
-\hspace{0.1cm}
-\begin{minipage}{0.25\linewidth}
-%\hspace{0.5em}
-%\vspace{-0.4cm}
-\centering
-%\includegraphics[scale=0.25]{log-pdf-wu-emc}
-\includegraphics[scale=0.40]{wu}
-\vspace{-0.2cm}
-\includegraphics[scale=0.19]{logoUNIPA}
-\includegraphics[scale=0.23]{Uni_Hohenheim_Logo_blau_GB}
+\hspace{0.0cm}
+\begin{minipage}{0.33\linewidth}
+\includegraphics[scale=0.12]{logoUNIPA}
 \end{minipage}
+%
+\hspace{-0.5cm}
+\begin{minipage}{0.33\linewidth}
+\includegraphics[scale=0.15]{Uni_Hohenheim_Logo_blau_GB}
+\end{minipage}
+\vspace{-0.5cm}
+\end{minipage}
+
+%
+%%\hfill
+%\hspace{0.1cm}
+%\begin{minipage}{0.25\linewidth}
+%%\hspace{0.5em}
+%%\vspace{-0.4cm}
+%\centering
+%%\includegraphics[scale=0.25]{log-pdf-wu-emc}
+%\includegraphics[scale=0.40]{wu}
+%\vspace{-0.2cm}
+%\includegraphics[scale=0.19]{logoUNIPA}
+%\includegraphics[scale=0.23]{Uni_Hohenheim_Logo_blau_GB}
+%\end{minipage}
 }%
 
-\headerbox{\textsc{References}}{name=Ref,span=1, column=2,below=beyond, above=bottom}{
+\headerbox{\textsc{References}}{name=Ref,span=2, column=0,below=beyond, above=bottom}{
 %\begin{minipage}{0.41\textwidth}
 %\vspace{-0.0cm}
 \renewcommand{\section}[2]{\vskip 0.05em} % Get rid of the default "References" section title
-\tiny%\scriptsize
+%\tiny
+\scriptsize
 \bibliographystyle{genetics}
-\vspace{-0.1cm}
+\vspace{0cm}
 \bibliography{litIWSM2015_poster}
 %\end{minipage}
 }
